@@ -1,0 +1,28 @@
+string Solution::minWindow(string A, string B) {
+
+
+
+
+// If there is no such window in A that covers all characters in B, return the empty string.
+// If there are multiple such windows, return the first occurring minimum window ( with minimum start index and length )
+
+
+
+
+I will maintain a map of the chqcters of B
+
+
+I will use 2pointer -> sliding window
+and if tht element is present in map I will decrement the ele count.
+
+
+everytime we cant check if the map is 0/empty so we maintain a counter of B
+length
+
+so everytime i find the character I will decrement it,if counter is 0 then i ill consider this window.
+
+
+now when I'm when i will slide the window to decrease the size, if tht character is in map, Ill add to map
+and also ill incremenet the counter.
+
+and as long as the counter is zero , Ill consider min window substring and continue it.
