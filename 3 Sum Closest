@@ -1,0 +1,101 @@
+int Solution::threeSumClosest(vector<int> &A, int B) {
+    
+    
+    sort(A.begin(),A.end());
+    int n=A.size();
+    
+    int closest=INT_MAX;
+    
+//   [-4,-1,1,2]
+    
+    for(int i=0;i<n;i++){
+    
+        int l=i+1;
+        int r=n-1;
+        
+        //also there can be duplicates, so I can skip those 
+        
+        while(l<r){
+            
+          
+            int sum= A[i] + A[l]+A[r];
+            
+            //if i found the exact sum, then thats the closest, so i return
+            if(sum==B) return sum;
+
+
+             // Update if this sum is closer to target
+            if (abs(sum - B) < abs(closest - B))
+                closest = sum;
+            
+            
+            //if sum>B, I try to decrease my search space, to find more
+            //nearer sum
+            if(sum>B){
+
+               r--;
+               
+                             
+               while(l<r && A[r]==A[r+1]) r--;
+
+                
+            }
+            
+            else{
+                
+                l++;
+                
+                while(l<r && A[l]==A[l-1]) l++;
+                
+            
+            }
+            
+        }
+        
+        
+    }
+    
+    
+
+    
+    return closest;
+    
+}
+
+
+
+// [-1,2,1,-4]
+
+// sort
+// [-4,-1,1,2]
+
+// -4 -> and then 2 pointer on the remaining elemnts
+// -1 -> 2 pointer again
+
+
+// -4 + (2-1) =
+// if sum is greater than move the right pointer to left
+// and if sum is smaller move the left pointer to right.
+
+// And keep tracking the potential closest element.
+
+
+
+
+
+// A = [-1, 2, 1, -4]
+// B = 1
+
+// The sum that is closest to the target is 2. (-1 + 2 + 1 = 2)
+
+
+// I will try to dry run and write my thught process here..
+
+
+// if we sort
+
+// [-4,-1,1,2]
+
+// [-4,-1,1] = -4
+// [-1,1,2] = 2 -> this is the nearest..
+
