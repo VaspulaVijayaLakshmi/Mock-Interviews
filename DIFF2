@@ -1,0 +1,26 @@
+Given an array A of integers and another non negative integer B . Find if there exists 2 indices i and j such that A[i] - A[j] = B and i != j.
+
+
+
+This is variation of 2 sum
+
+You want A[i] - A[j] = B → rearrange → A[i] = A[j] + B.
+
+So for each element A[j], you just need to check if A[j] + B already exists in the array.
+
+Code:
+#include <bits/stdc++.h>
+using namespace std;
+
+bool diffPossible(vector<int> &A, int B) {
+    unordered_set<int> seen;
+
+    for (int num : A) {
+        // Check both directions to handle B = 0 case correctly
+        if (seen.count(num + B) || seen.count(num - B))
+            return true;
+
+        seen.insert(num);
+    }
+    return false;
+}
